@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DefaultController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DefaultController::class, 'welcome'])->name('welcome');
+Route::get('/neo/hazardous', [DefaultController::class, 'index'])->name('index');
+Route::get(' /neo/fastest/{hazardous?}', [DefaultController::class, 'list'])->name('list');
+Route::get('/asteroids', [DefaultController::class, 'grab'])->name('grab');
